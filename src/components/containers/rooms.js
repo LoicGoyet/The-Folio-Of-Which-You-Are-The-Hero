@@ -3,6 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as houseAction from '../../actions/house'
 import * as inventoryAction from '../../actions/inventory'
+import * as rootAction from '../../actions/root'
 
 import EntranceRoom from '../rooms/entrance'
 import LeftCorridorRoom from '../rooms/leftCorridor'
@@ -22,6 +23,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   switchRoom: room => dispatch(houseAction.houseRoomSwitch(room)),
   unlockRoom: room => dispatch(houseAction.houseRoomUnlock(room)),
   addItemToInvetory: item => dispatch(inventoryAction.inventoryItemAdd(item)),
+  resetState: () => dispatch(rootAction.resetState()),
 })
 
 const rooms = {

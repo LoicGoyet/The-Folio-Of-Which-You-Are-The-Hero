@@ -5,9 +5,9 @@ import RoomTitle from '../roomTitle'
 import RoomHeader from '../roomHeader'
 import './style.css'
 
-const Room = ({ visited, children, illustration = false, title = false, header = true}) => (
+const Room = ({ visited, children, resetState, illustration = false, title = false, header = true}) => (
   <section className="room">
-    { header && <RoomHeader/> }
+    { header && <RoomHeader resetState={resetState}/> }
     <Type visited={visited} title={title}>
       { illustration && <RoomIllustration {...illustration}/> }
       { title && <RoomTitle title={title}/> }

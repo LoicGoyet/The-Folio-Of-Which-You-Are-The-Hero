@@ -2,8 +2,10 @@ import React from 'react'
 import GlitchText from '../glitchText'
 import './style.css'
 
-const RoomHeader = (props) => (
+const RoomHeader = ({resetState, ...props}) => (
   <header className="room-header">
+    <button onClick={e => resetState()}>reset</button>
+
     <div>
       <GlitchText
         className="room-header__subtitle"
