@@ -5,9 +5,9 @@
   border: 0;
   color: white;
   cursor: pointer;
+  border-radius: 0;
 }
 
 .inventory-button:hover {
   background-color: blueviolet;
 }
-
