@@ -1,0 +1,29 @@
+.room-header {
+  text-align: center;
+  border-bottom: 2px solid white;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: black;
+}
+
+.room-header__subtitle {
+  text-transform: uppercase;
+  font-size: 0.5rem;
+  letter-spacing: 0.25em;
+  display: block;
+}
+
+.room-header__title {
+  display: block;
+  margin: 0.25em 0 0.3em;
+  line-height: 1;
+  font-size: 1.2rem;
+}

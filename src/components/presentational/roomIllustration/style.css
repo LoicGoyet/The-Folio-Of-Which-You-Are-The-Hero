@@ -1,0 +1,22 @@
+.room-illustration {
+  position: relative;
+  margin: 1rem 0;
+}
+
+.room-illustration::before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+.room-illustration img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
