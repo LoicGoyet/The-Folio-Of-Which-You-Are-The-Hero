@@ -8,7 +8,6 @@ const EntranceRoom = ({switchRoom, trans, ...props}) => (
   <Room
     {...props}
     title={trans["entrance.title"]}
-    // header={false}
     illustration={{
       src: illustration,
       alt: "hello world !",

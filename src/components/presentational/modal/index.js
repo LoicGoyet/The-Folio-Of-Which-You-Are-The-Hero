@@ -1,28 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './style.css'
 
-class Modal extends Component {
-  backdropClick(event) {
-    return this.props.hideFunc()
-  }
+const Modal = ({toShow, hideFunc, children}) => {
+  if (!toShow) return null
 
-  render() {
-    const { toShow, hideFunc } = this.props
-
-    if (toShow) {
-      return (
-        <div className="modal" onClick={hideFunc}>
-          <div className="modal__dialog" onClick={e => e.stopPropagation()}>
-            <div className="modal__inner">
-              {this.props.children}
-            </div>
-          </div>
+  return (
+    <div className="modal" onClick={hideFunc}>
+      <div className="modal__dialog" onClick={e => e.stopPropagation()}>
+        <div className="modal__inner">
+          {children}
         </div>
-      )
-    }
-
-    return <span></span>
-  }
+      </div>
+    </div>
+  )
 }
 
 export default Modal
