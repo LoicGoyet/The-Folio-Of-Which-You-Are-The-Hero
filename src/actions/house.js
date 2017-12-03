@@ -13,21 +13,3 @@ export const houseRoomUnlock = room => {
     room: room,
   }
 }
-
-export const HOUSE_ROOM_MARK_VISITED = 'HOUSE_ROOM_MARK_VISITED'
-export const houseRoomMarkVisited = room => {
-  return {
-    type: HOUSE_ROOM_MARK_VISITED,
-    room: room,
-  }
-}
-
-export const markRoomAsVisited = store => next => action => {
-  if (action.type === HOUSE_ROOM_SWITCH) {
-    const { currentRoom } = store.getState().house
-    store.dispatch(houseRoomMarkVisited(currentRoom))
-  }
-
-  let result = next(action)
-  return result
-}

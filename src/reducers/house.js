@@ -1,7 +1,6 @@
 import {
   HOUSE_ROOM_SWITCH,
   HOUSE_ROOM_UNLOCK,
-  HOUSE_ROOM_MARK_VISITED,
 } from '../actions/house'
 
 const defaultState = {
@@ -24,9 +23,17 @@ const defaultState = {
 const house = (state = defaultState, action) => {
   switch (action.type) {
     case HOUSE_ROOM_SWITCH:
+      const leavingRoom = state.currentRoom
+
       return {
         ...state,
-        "currentRoom": action.room
+        "currentRoom": action.room,
+
+        // The room left by the user is mark as visited
+        [leavingRoom]: {
+          ...state[leavingRoom],
+          "visited": true,
+        }
       }
 
     case HOUSE_ROOM_UNLOCK:
@@ -35,15 +42,6 @@ const house = (state = defaultState, action) => {
         [action.room]: {
           ...state[action.room],
           "locked": false,
-        }
-      }
-
-    case HOUSE_ROOM_MARK_VISITED:
-      return {
-        ...state,
-        [action.room]: {
-          ...state[action.room],
-          "visited": true,
         }
       }
 
