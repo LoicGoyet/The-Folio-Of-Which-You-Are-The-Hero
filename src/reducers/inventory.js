@@ -2,10 +2,13 @@ import {
   INVENTORY_ITEM_ADD,
   INVENTORY_ITEM_REMOVE,
   INVENTORY_FOLD_TOGGLE,
+} from '../actions/inventory'
+
+import {
   INVENTORY_FOLD_OPEN,
   INVENTORY_ITEM_EMPHASIS_SET,
   INVENTORY_ITEM_EMPHASIS_UNSET,
-} from '../actions/inventory'
+} from '../sagas/inventory'
 
 const defaultState = {
   'items': [],
