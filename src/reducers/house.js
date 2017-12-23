@@ -1,7 +1,11 @@
 import {
-  HOUSE_ROOM_SWITCH,
   HOUSE_ROOM_UNLOCK,
 } from '../actions/house'
+
+import {
+  HOUSE_ROOM_SET_AS_VISITED,
+  HOUSE_ROOM_UPDATE_CURRENTROOM,
+} from '../sagas/house'
 
 const defaultState = {
   "currentRoom": "entrance",
@@ -22,18 +26,21 @@ const defaultState = {
 
 const house = (state = defaultState, action) => {
   switch (action.type) {
-    case HOUSE_ROOM_SWITCH:
+    case HOUSE_ROOM_SET_AS_VISITED:
       const leavingRoom = state.currentRoom
 
       return {
         ...state,
-        "currentRoom": action.room,
-
-        // The room left by the user is mark as visited
         [leavingRoom]: {
           ...state[leavingRoom],
           "visited": true,
         }
+      }
+    
+    case HOUSE_ROOM_UPDATE_CURRENTROOM:
+      return {
+        ...state,
+        "currentRoom": action.room,
       }
 
     case HOUSE_ROOM_UNLOCK:

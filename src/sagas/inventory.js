@@ -27,7 +27,7 @@ function* inventoryItemEmphasisUnset() {
   }
 }
 
-export function* inventoryWatcher() {
+export default function* inventoryWatcher() {
   yield takeEvery('INVENTORY_ITEM_ADD', inventoryFoldOpen)
   yield takeEvery('INVENTORY_ITEM_ADD', inventoryItemEmphasisSet)
   yield takeEvery('INVENTORY_FOLD_TOGGLE', inventoryItemEmphasisUnset)
