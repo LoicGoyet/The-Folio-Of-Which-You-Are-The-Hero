@@ -1,10 +1,11 @@
 import React from 'react'
-import './style.css'
+import { createComponent } from 'react-fela'
+import { button } from './style'
 
-const Button = props => (
-  <button className="btn" {...props}>
-    {props.children}
-  </button>
+const Button = createComponent(button, 'button')
+
+export default ({children, ...props}) => (
+    <Button {...props}>
+        {children}
+    </Button>
 )
-
-export default Button
