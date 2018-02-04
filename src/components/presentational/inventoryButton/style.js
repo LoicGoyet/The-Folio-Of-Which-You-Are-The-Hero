@@ -1,22 +1,34 @@
-const emphasisAnimation = () => ({
-    'to': { boxShadow: '0 0 0 10px #00ff96' },
-})
+import constants from '../../../style/constants'
 
-export const inventoryButton = ({emphasis}) => ({
-    height: '40px',
-    width: '40px',
-    backgroundColor: 'black',
-    border: 0,
-    color: 'white',
-    cursor: 'pointer',
-    borderRadius: 0,
-    boxShadow: emphasis ? '0 0 0 0 #00ff96' : 'initial',
-    animation: emphasis ? '0.6s steps(3, start) infinite' : 'initial',
-    animationName: {
-        'to': { boxShadow: '0 0 0 10px #00ff96' },
-    },
+const { colors, colorAbstracts } = constants
 
-    ':hover': {
-        backgroundColor: 'blueviolet',
-    },
-})
+export const inventoryButton = ({emphasis = false}) => {
+    const size = '40px'
+
+    const rules = {
+        height: size,
+        width: size,
+        backgroundColor: colorAbstracts.background,
+        border: 0,
+        color: colorAbstracts.defaultText,
+        cursor: 'pointer',
+        borderRadius: 0,
+
+        ':hover': {
+            backgroundColor: colors.blueviolet,
+        },
+    }
+
+    const emphasisRules = {
+        boxShadow: `0 0 0 0 ${colors.green}`,
+        animation: '0.6s steps(3, start) infinite',
+        animationName: {
+            'to': { boxShadow: `0 0 0 10px ${colors.green}` },
+        },
+    }
+
+    return {
+        ...rules,
+        ...(emphasis ? emphasisRules : {})
+    }
+}

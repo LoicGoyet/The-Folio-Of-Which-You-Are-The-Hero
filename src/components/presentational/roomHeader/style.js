@@ -1,6 +1,10 @@
+import constants from '../../../style/constants'
+
+const { colorAbstracts } = constants
+
 export const roomHeader = () => ({
     textAlign: 'center',
-    borderBottom: '2px solid white',
+    borderBottom: `2px solid ${colorAbstracts.defaultText}`,
     padding: '0 1rem',
     display: 'flex',
     justifyContent: 'center',
@@ -11,7 +15,7 @@ export const roomHeader = () => ({
     left: 0,
     width: '100%',
     zIndex: 10,
-    backgroundColor: 'black',
+    backgroundColor: colorAbstracts.background,
 
     '& .subtitle': {
         textTransform: 'uppercase',

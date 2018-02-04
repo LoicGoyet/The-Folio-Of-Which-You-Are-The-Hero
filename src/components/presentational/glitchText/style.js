@@ -1,4 +1,8 @@
-const glitchAnim = () => ({
+import constants from '../../../style/constants'
+
+const { colors, colorAbstracts } = constants
+
+const glitchAnim = {
     '0%':           { clip: 'rect(1px, 9999px, 2px, 0)' },
     '4.16666667%':  { clip: 'rect(7px, 9999px, 54px, 0)' },
     '8.33333333%':  { clip: 'rect(85px, 9999px, 7px, 0)' },
@@ -24,9 +28,9 @@ const glitchAnim = () => ({
     '91.66666667%': { clip: 'rect(62px, 9999px, 82px, 0)' },
     '95.83333333%': { clip: 'rect(18px, 9999px, 60px, 0)' },
     '100%':         { clip: 'rect(56px, 9999px, 144px, 0)' },
-})
+}
 
-const glitchAnim2 = () => ({
+const glitchAnim2 = {
     '6.66666667%':  { clip: 'rect(31px, 9999px, 18px, 0)' },
     '10%':          { clip: 'rect(59px, 9999px, 60px, 0)' },
     '13.33333333%': { clip: 'rect(29px, 9999px, 61px, 0)' },
@@ -56,10 +60,10 @@ const glitchAnim2 = () => ({
     '93.33333333%': { clip: 'rect(18px, 9999px, 25px, 0)' },
     '96.66666667%': { clip: 'rect(142px, 9999px, 66px, 0)' },
     '100%':         { clip: 'rect(44px, 9999px, 104px, 0)' },
-})
+}
 
 
-export const glitchText = ({text, block = false}, renderer) => ({
+export const glitchText = ({text, block = false}) => ({
     position: 'relative',
     display: block ? 'block' : 'inline-block',
 
@@ -69,11 +73,12 @@ export const glitchText = ({text, block = false}, renderer) => ({
         top: 0,
         width: '100%',
         height: '100%',
-        background: 'black',
+        backgroundColor: colorAbstracts.background,
         left: '2px',
-        textShadow: '-2px 0 #49FC00',
+        textShadow: `-2px 0 ${colors.green}`,
         clip: 'rect(24px, 550px, 90px, 0)',
-        animation: `${renderer.renderKeyframe(glitchAnim2)} 2.5s infinite linear alternate-reverse`,
+        animation: `2.5s infinite linear alternate-reverse`,
+        animationName: glitchAnim2,
     },
 
     ':after': {
@@ -82,10 +87,11 @@ export const glitchText = ({text, block = false}, renderer) => ({
         top: 0,
         width: '100%',
         height: '100%',
-        background: 'black',
+        backgroundColor: colorAbstracts.background,
         left: '-2px',
-        textShadow: '-2px 0 #b300fc',
+        textShadow: `-2px 0 ${colors.violet}`,
         clip: 'rect(85px, 550px, 140px, 0)',
-        animation: `${renderer.renderKeyframe(glitchAnim)} 3s infinite linear alternate-reverse`,
+        animation: `3s infinite linear alternate-reverse`,
+        animationName: glitchAnim,
     },
 })

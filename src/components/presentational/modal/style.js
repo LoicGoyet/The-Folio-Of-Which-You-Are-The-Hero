@@ -1,8 +1,13 @@
+import constants from '../../../style/constants'
+import { opacify } from '../../../style/functions'
+
+const { colors } = constants
+
 export const modal = () => ({
     position: 'fixed',
     top: 0,
     left: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: opacify(colors.black, 0.75),
     width: '100%',
     height: '100%',
     overflowX: 'hidden',
@@ -23,7 +28,7 @@ export const modalDialog = () => ({
 })
 
 export const modalInner = () => ({
-    backgroundColor: 'white',
-    color: 'black',
+    backgroundColor: colors.white,
+    color: colors.black,
     padding: '1rem',
 })

@@ -1,37 +1,63 @@
-export const button = ({framed, size = 'md', ...props}) => ({
-    background: 'transparent',
-    border: framed ? '0.125em solid currentColor' : 0,
-    color: 'inherit',
-    cursor: 'pointer',
-    padding: '1em',
-    textDecoration: framed ? 'none' : 'underline',
-    fontSize: (() => {
-        if (size === 'sm') return '0.75em'
-        return '1em'
-    })(),
-    fontFamily: 'inherit',
-    borderRadius: 0,
+import constants from '../../../style/constants'
 
-    ':hover': {
-        backgroundColor: 'white',
-        color: 'black',
-        borderColor: framed ? 'black' : 'inherit',
-    },
+const { colorAbstracts } = constants
 
-    ':active': {
-        backgroundColor: 'white',
-        color: 'black',
-    },
+export const button = ({framed, size, ...props}) => {
+    const rules = {
+        background: 0,
+        border: 0,
+        color: 'inherit',
+        cursor: 'pointer',
+        padding: '1em',
+        textDecoration: 'underline',
+        fontFamily: 'inherit',
+        borderRadius: 0,
+        fontSize: '1em',
 
-    ':focus': {
-        backgroundColor: 'white',
-        color: 'black',
-    },
+        ':hover': {
+            backgroundColor: colorAbstracts.defaultText,
+            color: colorAbstracts.background,
+            borderColor: 'inherit',
+        },
 
-    '[disabled]': {
-        cursor: 'not-allowed',
-        textDecoration: 'none',
-        color: 'grey',
-        pointerEvents: 'none',
+        ':active': {
+            backgroundColor: colorAbstracts.defaultText,
+            color: colorAbstracts.background,
+        },
+
+        ':focus': {
+            backgroundColor: colorAbstracts.defaultText,
+            color: colorAbstracts.background,
+        },
+
+        '[disabled]': {
+            cursor: 'not-allowed',
+            textDecoration: 'none',
+            color: 'grey',
+            pointerEvents: 'none',
+        }
     }
-})
+
+    const sizeRules = {
+        'sm': {
+            fontSize: '0.75em',
+        },
+    }
+
+    const framedRules = {
+        border: '0.125em solid currentColor',
+        textDecoration: 'none',
+
+        ':hover': {
+            borderColor: colorAbstracts.defaultText,
+            backgroundColor: colorAbstracts.defaultText,
+            color: colorAbstracts.background,
+        },
+    }
+
+    return {
+        ...rules,
+        ...(size ? sizeRules[size]: {}),
+        ...(framed ? framedRules : {}),
+    }
+}

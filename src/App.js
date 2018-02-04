@@ -5,7 +5,6 @@ import { Provider, createComponent } from 'react-fela'
 import embedded from 'fela-plugin-embedded'
 import globalStyle, { appContainer } from './style'
 
-
 const AppContainer = createComponent(appContainer)
 
 class App extends Component {
