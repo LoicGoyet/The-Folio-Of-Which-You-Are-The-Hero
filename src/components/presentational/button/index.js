@@ -1,8 +1,8 @@
 import React from 'react'
-import { createComponent } from 'react-fela'
+import { createComponentWithProxy } from 'react-fela'
 import { button } from './style'
 
-const Button = createComponent(button, 'button')
+const Button = createComponentWithProxy(button, 'button')
 
 export default ({children, ...props}) => (
     <Button {...props}>

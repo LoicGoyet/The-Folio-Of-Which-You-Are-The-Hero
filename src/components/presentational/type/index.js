@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Typist from 'react-typist';
 import BlinkContent from '../blinkContent'
 import { isTouchDevice } from '../../../utils/device'
-import './style.css'
 
 class Type extends Component {
   constructor(props) {

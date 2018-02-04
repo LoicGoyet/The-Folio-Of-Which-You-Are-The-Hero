@@ -1,10 +1,13 @@
 import React from 'react'
-import './style.css'
+import { createComponent } from 'react-fela'
+import { roomIllustration } from './style'
+
+const RoomIllustrationWrapper = createComponent(roomIllustration)
 
 const RoomIllustration = ({src, alt}) => (
-  <div className="room-illustration">
+  <RoomIllustrationWrapper>
     <img src={src} alt={alt}/>
-  </div>
+  </RoomIllustrationWrapper>
 )
 
 export default RoomIllustration

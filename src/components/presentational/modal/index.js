@@ -1,18 +1,21 @@
 import React from 'react'
-import './style.css'
+import { createComponent, createComponentWithProxy } from 'react-fela'
+import { modal, modalDialog, modalInner } from './style'
 
-const Modal = ({toShow, hideFunc, children}) => {
-  if (!toShow) return null
+export default ({toShow, hideFunc, children}) => {
+    if (!toShow) return null
 
-  return (
-    <div className="modal" onClick={hideFunc}>
-      <div className="modal__dialog" onClick={e => e.stopPropagation()}>
-        <div className="modal__inner">
-          {children}
-        </div>
-      </div>
-    </div>
-  )
+    const Modal = createComponentWithProxy(modal)
+    const ModalDialog = createComponentWithProxy(modalDialog)
+    const ModalInner = createComponent(modalInner)
+
+    return (
+        <Modal onClick={hideFunc}>
+            <ModalDialog onClick={e => e.stopPropagation()}>
+                <ModalInner>
+                    {children}
+                </ModalInner>
+            </ModalDialog>
+        </Modal>
+    )
 }
-
-export default Modal

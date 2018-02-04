@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
-import './App.css';
 import HeroGame from './components/containers/heroGame'
 import { createRenderer } from 'fela'
-import { Provider } from 'react-fela'
+import { Provider, createComponent } from 'react-fela'
+import embedded from 'fela-plugin-embedded'
+import globalStyle, { appContainer } from './style'
 
+
+const AppContainer = createComponent(appContainer)
 
 class App extends Component {
   render() {
-    const renderer = createRenderer()
+    const renderer = createRenderer({
+        plugins: [ embedded() ]
+    })
+
+    renderer.renderStatic(globalStyle)
 
     return (
       <Provider renderer={renderer}>
-        <div className="app-container">
+        <AppContainer>
           <HeroGame/>
-        </div>
+        </AppContainer>
       </Provider>
     )
   }

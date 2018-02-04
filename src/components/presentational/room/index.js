@@ -3,24 +3,29 @@ import Type from '../type'
 import RoomIllustration from '../roomIllustration'
 import RoomTitle from '../roomTitle'
 import RoomHeader from '../roomHeader'
-import './style.css'
+import { createComponent } from 'react-fela'
+import { room } from './style'
 
-const Room = ({visited, children, resetState, illustration, title, header}) => (
-  <section className="room">
-    {header && <RoomHeader resetState={resetState}/>}
+const RoomWrapper = createComponent(room);
 
-    <Type visited={visited} title={title}>
-      {illustration && <RoomIllustration {...illustration}/>}
-      {title && <RoomTitle title={title}/>}
-      {children}
-    </Type>
-  </section>
-)
+const Room = ({visited, children, resetState, illustration, title, header}) => {
+    return (
+        <RoomWrapper>
+            {header && <RoomHeader resetState={resetState}/>}
+
+            <Type visited={visited} title={title}>
+                {illustration && <RoomIllustration {...illustration}/>}
+                {title && <RoomTitle title={title}/>}
+                {children}
+            </Type>
+        </RoomWrapper>
+    )
+}
 
 Room.defaultProps = {
-  illustration: false,
-  title: false,
-  header: true,
+    illustration: false,
+    title: false,
+    header: true,
 }
 
 export default Room

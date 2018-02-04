@@ -1,10 +1,11 @@
 import React from 'react'
-import './style.css'
+import { createComponent } from 'react-fela'
+import { blinkContent } from './style'
 
-const BlinkContent = ({children, className = ''}) => (
-  <div className={`blink-content ${className}`}>
-    {children}
-  </div>
+const BlinkContent = createComponent(blinkContent)
+
+export default ({children, className = ''}) => (
+    <BlinkContent className={className}>
+        {children}
+    </BlinkContent>
 )
-
-export default BlinkContent

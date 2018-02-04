@@ -1,8 +1,11 @@
 import React from 'react'
-import './style.css'
+import { createComponent } from 'react-fela'
+import { buttonGroup } from './style'
 
-const ButtonGroup = props => (
-  <div className="btn-group">{props.children}</div>
+const ButtonGroup = createComponent(buttonGroup)
+
+export default ({children}) => (
+    <ButtonGroup>
+        {children}
+    </ButtonGroup>
 )
-
-export default ButtonGroup

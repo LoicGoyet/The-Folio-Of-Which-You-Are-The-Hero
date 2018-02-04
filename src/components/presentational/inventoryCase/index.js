@@ -1,19 +1,22 @@
 import React from 'react'
 import icon from './icon'
-import './style.css';
+import { createComponent, createComponentWithProxy } from 'react-fela'
+import { inventory, inventoryToggle, inventoryNoItems } from './style';
 
-const InventoryCase = ({ children, toggleFold, inventory }) => (
-  <div className={`inventory ${inventory.folded ? 'inventory--folded' : 'inventory--unfolded' }`}>
-    <button className="inventory__toggle" onClick={e => toggleFold()}>
-      {icon}
-    </button>
+const Inventory = createComponent(inventory)
+const InventoryToggle = createComponentWithProxy(inventoryToggle, 'button')
+const InventoryNoItems = createComponent(inventoryNoItems)
 
-    {/* if no children passed display message */}
-    {!children && <div className="inventory__no-items">no items</div>}
+export default ({ children, toggleFold, inventory }) => (
+    <Inventory unfolded={!inventory.folded}>
+        <InventoryToggle onClick={e => toggleFold()}>
+            {icon}
+        </InventoryToggle>
 
-    {/* display the children */}
-    {children}
-  </div>
+        {/* if no children passed display message */}
+        {!children && <InventoryNoItems>no items</InventoryNoItems>}
+
+        {/* display the children */}
+        {children}
+    </Inventory>
 )
-
-export default InventoryCase

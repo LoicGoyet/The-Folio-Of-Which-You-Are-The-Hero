@@ -1,8 +1,11 @@
 import React from 'react'
-import './style.css'
+import { createComponent } from 'react-fela'
+import { glitchText } from './style'
 
-const GlitchText = ({text, className = ''}) => (
-  <span className={`glitch-text ${className}`} data-text={text}>{text}</span>
+const GlitchText = createComponent(glitchText, 'span')
+
+export default props => (
+    <GlitchText {...props}>
+        {props.text}
+    </GlitchText>
 )
-
-export default GlitchText

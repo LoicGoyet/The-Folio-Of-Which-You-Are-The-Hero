@@ -1,12 +1,15 @@
 import React from 'react'
-import './style.css'
+import { createComponent } from 'react-fela'
+import { roomTitle } from './style'
 
 import GlitchText from '../glitchText'
 
+const RoomTitleWrapper = createComponent(roomTitle, 'h1')
+
 const RoomTitle = ({title}) => (
-  <h1 className="room-title">
+  <RoomTitleWrapper>
     <GlitchText text={title}/>
-  </h1>
+  </RoomTitleWrapper>
 )
 
 export default RoomTitle

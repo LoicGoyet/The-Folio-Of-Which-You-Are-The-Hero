@@ -1,44 +1,47 @@
 import React, { Component } from 'react'
-import './style.css'
+import { createComponentWithProxy } from 'react-fela'
+import { inventoryButton } from './style'
 
 import Modal from '../modal'
 
 class InventoryButton extends Component {
-  constructor(props) {
-    super(props)
+    constructor(props) {
+        super(props)
 
-    this.displayModal = this.displayModal.bind(this)
-    this.hideModal = this.hideModal.bind(this)
+        this.displayModal = this.displayModal.bind(this)
+        this.hideModal = this.hideModal.bind(this)
 
-    this.state = {
-      modalOpened: false,
+        this.state = {
+            modalOpened: false,
+        }
     }
-  }
 
-  displayModal() {
-    this.props.unsetEmphasis()
-    return this.setState({modalOpened: true})
-  }
+    displayModal() {
+        this.props.unsetEmphasis()
+        return this.setState({modalOpened: true})
+    }
 
-  hideModal() {
-    this.setState({modalOpened: !this.state.modalOpened});
-  }
+    hideModal() {
+        this.setState({modalOpened: !this.state.modalOpened});
+    }
 
-  render() {
-    const {emphasis = false, children} = this.props
+    render() {
+        const {emphasis = false, children} = this.props
 
-    return (
-      <div>
-        <button onClick={this.displayModal} className={`inventory-button ${emphasis ? 'emphasis': ''}`}>
-          {children}
-        </button>
+        const InventoryButton = createComponentWithProxy(inventoryButton, 'button')
 
-        <Modal toShow={this.state.modalOpened} hideFunc={this.hideModal}>
-          {this.props.modal()}
-        </Modal>
-      </div>
-    )
-  }
+        return (
+            <div>
+                <InventoryButton onClick={this.displayModal} emphasis={emphasis}>
+                    {children}
+                </InventoryButton>
+
+                <Modal toShow={this.state.modalOpened} hideFunc={this.hideModal}>
+                    {this.props.modal()}
+                </Modal>
+            </div>
+        )
+    }
 }
 
 export default InventoryButton
