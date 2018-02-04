@@ -31,3 +31,9 @@ export const roomHeader = () => ({
         fontSize: '1.2rem',
     }
 })
+
+export const roomHeaderResetBtn = () => ({
+    left: '1rem',
+    position: 'absolute',
+    zIndex: 1,
+})

@@ -4,7 +4,7 @@ const { colorAbstracts } = constants
 
 export const button = ({framed, size, ...props}) => {
     const rules = {
-        background: 0,
+        background: colorAbstracts.background,
         border: 0,
         color: 'inherit',
         cursor: 'pointer',
@@ -45,7 +45,7 @@ export const button = ({framed, size, ...props}) => {
     }
 
     const framedRules = {
-        border: '0.125em solid currentColor',
+        border: '2px solid currentColor',
         textDecoration: 'none',
 
         ':hover': {

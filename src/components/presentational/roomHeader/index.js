@@ -1,14 +1,15 @@
 import React from 'react'
 import GlitchText from '../glitchText'
 import Button from '../button'
-import { createComponent } from 'react-fela'
-import { roomHeader } from './style'
+import { createComponent, createComponentWithProxy } from 'react-fela'
+import { roomHeader, roomHeaderResetBtn } from './style'
 
 const RoomHeaderWrapper = createComponent(roomHeader, 'header')
+const RoomHeaderResetBtn = createComponentWithProxy(roomHeaderResetBtn, Button)
 
 const RoomHeader = ({resetState, ...props}) => (
   <RoomHeaderWrapper>
-    <Button framed size="sm" onClick={e => resetState()}>reset</Button>
+    <RoomHeaderResetBtn framed size="sm" onClick={e => resetState()}>reset</RoomHeaderResetBtn>
 
     <div>
       <GlitchText
