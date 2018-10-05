@@ -1,24 +1,43 @@
-export const SWITCH_ROOM = 'logo-folio/rooms/SWITCH_ROOM';
+export const MOVE = 'logo-folio/rooms/MOVE';
+export const UNLOCK = 'logo-folio/rooms/UNLOCK'
 
 export const defaultState = {
     active: 'Parvis',
-    byRoom: {
+    byTitle: {
         'Parvis': {
             locked: false,
         },
         'Kitchen': {
+            locked: true,
+        },
+        'Library': {
             locked: false,
         },
     },
-    allRooms: ['Parvis', 'Kitchen'],
+    allTitles: ['Parvis', 'Kitchen'],
 }
 
 export default (state = defaultState, action = {}) => {
     switch (action.type) {
-        case SWITCH_ROOM: {
+        case MOVE: {
             return {
                 ...state,
                 active: action.room,
+            }
+        }
+
+        case UNLOCK: {
+            const {room} = action;
+
+            return {
+                ...state,
+                byTitle: {
+                    ...state.byTitle,
+                    [room]: {
+                        ...state.byTitle[room],
+                        locked: false,
+                    }
+                }
             }
         }
 
@@ -28,7 +47,12 @@ export default (state = defaultState, action = {}) => {
     }
 };
 
-export const switchRoom = room => ({
-    type: SWITCH_ROOM,
+export const move = room => ({
+    type: MOVE,
     room,
 });
+
+export const unlock = room => ({
+    type: UNLOCK,
+    room,
+})
