@@ -14,7 +14,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "CI=true react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test",
     "eject": "react-scripts eject",
     "pretty": "prettier-eslint --write 'src/**/*.{js,jsx}'",
     "lint": "./node_modules/.bin/eslint ./src"
@@ -42,7 +43,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
-    "hus": "^0.0.1",
+    "husky": "^1.1.1",
     "prettier": "^1.14.3",
     "prettier-eslint-cli": "^4.7.1"
   }
