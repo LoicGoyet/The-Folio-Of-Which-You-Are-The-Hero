@@ -12,6 +12,22 @@ export const defaultState = {
         },
         'Library': {
             locked: false,
+            interactives: {
+                byId: {
+                    0: {
+                        title: 'tiroir',
+                        items: [0, 1],
+                        message: 'ha ha ha',
+                        open: false,
+                    },
+                    1: {
+                        title: 'placard',
+                        items: [2],
+                        open: false,
+                    },
+                },
+                allIds: [0, 1]
+            }
         },
     },
     allTitles: ['Parvis', 'Kitchen'],
