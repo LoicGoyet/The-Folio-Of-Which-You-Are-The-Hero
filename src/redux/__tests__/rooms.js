@@ -5,14 +5,14 @@ it('defaultState is setup by default', () => {
 });
 
 it('move room', () => {
-  const goToRoom = 'Kitchen';
+  const goToRoom = 1;
   const state = reducer(defaultState, move(goToRoom));
   expect(state.active).toEqual(goToRoom);
 });
 
 it('unlock room', () => {
-  const unlockedRoom = 'Kitchen';
-  expect(defaultState.byTitle[unlockedRoom].locked).toEqual(true);
+  const unlockedRoom = 1;
+  expect(defaultState.byId[unlockedRoom].locked).toEqual(true);
   const state = reducer(defaultState, unlock(unlockedRoom));
-  expect(state.byTitle[unlockedRoom].locked).toEqual(false);
+  expect(state.byId[unlockedRoom].locked).toEqual(false);
 });

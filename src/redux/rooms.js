@@ -2,35 +2,22 @@ export const MOVE = 'logo-folio/rooms/MOVE';
 export const UNLOCK = 'logo-folio/rooms/UNLOCK';
 
 export const defaultState = {
-  active: 'Parvis',
-  byTitle: {
-    Parvis: {
+  active: 0,
+  byId: {
+    0: {
+      id: 0,
+      title: 'Parvis',
+      component: 'Parvis',
       locked: false,
     },
-    Kitchen: {
+    1: {
+      id: 1,
+      title: 'Kitchen',
+      component: 'Kitchen',
       locked: true,
     },
-    Library: {
-      locked: false,
-      interactives: {
-        byId: {
-          0: {
-            title: 'tiroir',
-            items: [0, 1],
-            message: 'ha ha ha',
-            open: false,
-          },
-          1: {
-            title: 'placard',
-            items: [2],
-            open: false,
-          },
-        },
-        allIds: [0, 1],
-      },
-    },
   },
-  allTitles: ['Parvis', 'Kitchen'],
+  allIds: [0, 1, 2],
 };
 
 export default (state = defaultState, action = {}) => {
@@ -38,19 +25,19 @@ export default (state = defaultState, action = {}) => {
     case MOVE: {
       return {
         ...state,
-        active: action.room,
+        active: action.id,
       };
     }
 
     case UNLOCK: {
-      const { room } = action;
+      const { id } = action;
 
       return {
         ...state,
-        byTitle: {
-          ...state.byTitle,
-          [room]: {
-            ...state.byTitle[room],
+        byId: {
+          ...state.byId,
+          [id]: {
+            ...state.byId[id],
             locked: false,
           },
         },
@@ -63,12 +50,12 @@ export default (state = defaultState, action = {}) => {
   }
 };
 
-export const move = room => ({
+export const move = id => ({
   type: MOVE,
-  room,
+  id,
 });
 
-export const unlock = room => ({
+export const unlock = id => ({
   type: UNLOCK,
-  room,
+  id,
 });
