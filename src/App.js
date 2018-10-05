@@ -4,12 +4,10 @@ import { Provider } from 'react-redux';
 import Rooms from './containers/Rooms';
 import store from './store';
 
-export default class App extends React.Component {
-    render() {
-        return (
-            <Provider store={store}>
-                <Rooms />
-            </Provider>
-        );
-    }
-}
+const App = () => (
+  <Provider store={store}>
+    <Rooms />
+  </Provider>
+);
+
+export default App;
