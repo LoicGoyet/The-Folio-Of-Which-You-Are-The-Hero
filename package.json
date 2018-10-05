@@ -16,7 +16,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "pretty": "prettier-eslint --write 'src/**/*.{js,jsx,scss,css}'",
+    "pretty": "prettier-eslint --write 'src/**/*.{js,jsx}'",
     "lint": "./node_modules/.bin/eslint ./src"
   },
   "husky": {
@@ -44,7 +44,6 @@
     "eslint-plugin-react": "^7.11.1",
     "hus": "^0.0.1",
     "prettier": "^1.14.3",
-    "prettier-eslint-cli": "^4.7.1",
-    "prettier-stylelint": "^0.4.2"
+    "prettier-eslint-cli": "^4.7.1"
   }
 }
