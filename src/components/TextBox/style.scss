@@ -1,0 +1,31 @@
+@import '../../style/utils/colors.scss';
+
+.text-box {
+  background-color: $black;
+  color: $white;
+  padding: 1.5rem;
+  border-radius: 5px;
+  position: relative;
+  transition: transform 300ms ease-in-out;
+  transform: scaleY(0);
+
+  &.text-box--is-open {
+    transform: scaleY(1);
+  }
+}
+
+.text-box::before {
+  content: '';
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  right: 0.25rem;
+  bottom: 0.25rem;
+  border: 5px ridge $white;
+}
+
+
+.text-box .glitch-text {
+  --color: #{$blue-light};
+  --bg: #{$black};
+}
