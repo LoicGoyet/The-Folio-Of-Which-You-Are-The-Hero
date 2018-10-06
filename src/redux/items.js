@@ -1,3 +1,5 @@
+import { assocPath } from 'ramda';
+
 export const ADD_IN_INVENTORY = 'logo-folio/items/ADD_IN_INVENTORY';
 
 export const defaultState = {
@@ -15,18 +17,7 @@ export const defaultState = {
 export default (state = defaultState, action = {}) => {
   switch (action.type) {
     case ADD_IN_INVENTORY: {
-      const { id } = action;
-
-      return {
-        ...state,
-        byId: {
-          ...state.byId,
-          [id]: {
-            ...state.byId[id],
-            inInventory: true,
-          },
-        },
-      };
+      return assocPath(['byId', action.itemId, 'inInventory'], true, state);
     }
 
     default: {
@@ -35,7 +26,9 @@ export default (state = defaultState, action = {}) => {
   }
 };
 
-export const addInInventory = id => ({
+export const addInInventory = (roomId, interactiveId, itemId) => ({
   type: ADD_IN_INVENTORY,
-  id,
+  roomId,
+  interactiveId,
+  itemId,
 });

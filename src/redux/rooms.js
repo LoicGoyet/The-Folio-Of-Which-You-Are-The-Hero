@@ -1,5 +1,8 @@
+import { assocPath, path } from 'ramda';
+
 export const MOVE = 'logo-folio/rooms/MOVE';
 export const UNLOCK = 'logo-folio/rooms/UNLOCK';
+export const REMOVE_ITEM = 'logo-folio/rooms/REMOVE_ITEM';
 
 export const defaultState = {
   active: 0,
@@ -16,6 +19,26 @@ export const defaultState = {
       component: 'Kitchen',
       locked: true,
     },
+    2: {
+      id: 2,
+      title: 'Library',
+      component: 'Library',
+      locked: false,
+      interactives: {
+        byId: {
+          0: {
+            title: 'tiroir',
+            items: [0],
+            message: 'ha ha ha',
+          },
+          1: {
+            title: 'placard',
+            items: [],
+          },
+        },
+        allIds: [0, 1],
+      },
+    },
   },
   allIds: [0, 1, 2],
 };
@@ -30,18 +53,14 @@ export default (state = defaultState, action = {}) => {
     }
 
     case UNLOCK: {
-      const { id } = action;
+      return assocPath(['byId', action.id, 'locked'], false, state);
+    }
 
-      return {
-        ...state,
-        byId: {
-          ...state.byId,
-          [id]: {
-            ...state.byId[id],
-            locked: false,
-          },
-        },
-      };
+    case REMOVE_ITEM: {
+      const { roomId, interactiveId, itemId } = action;
+      const itemsPath = ['byId', roomId, 'interactives', 'byId', interactiveId, 'items'];
+      const items = path(itemsPath, state);
+      return assocPath(itemsPath, items.filter(item => item !== itemId), state);
     }
 
     default: {
@@ -58,4 +77,11 @@ export const move = id => ({
 export const unlock = id => ({
   type: UNLOCK,
   id,
+});
+
+export const removeItem = (roomId, interactiveId, itemId) => ({
+  type: REMOVE_ITEM,
+  roomId,
+  interactiveId,
+  itemId,
 });
