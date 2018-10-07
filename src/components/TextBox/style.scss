@@ -3,29 +3,28 @@
 .text-box {
   background-color: $black;
   color: $white;
-  padding: 1.5rem;
+  padding: 1.25rem;
   border-radius: 5px;
   position: relative;
   transition: transform 300ms ease-in-out;
   transform: scaleY(0);
+  border: 5px ridge $white;
 
   &.text-box--is-open {
     transform: scaleY(1);
   }
 }
 
-.text-box::before {
-  content: '';
-  position: absolute;
-  top: 0.25rem;
-  left: 0.25rem;
-  right: 0.25rem;
-  bottom: 0.25rem;
-  border: 5px ridge $white;
-}
-
-
 .text-box .glitch-text {
   --color: #{$blue-light};
   --bg: #{$black};
+}
+
+
+.text-box p {
+  margin-top: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }

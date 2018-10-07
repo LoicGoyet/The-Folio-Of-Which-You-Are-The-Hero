@@ -1,0 +1,12 @@
+@import '../../style/utils/aspect-ratio.scss';
+@import '../../style/utils/colors.scss';
+
+.screen {
+  --color: #{$white};
+  @include aspect-ratio(4, 3);
+  background-color: $black;
+  color: var(--color);
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
