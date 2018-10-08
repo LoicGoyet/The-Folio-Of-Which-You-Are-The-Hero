@@ -1,13 +1,9 @@
 import React from 'react';
 import './style.scss';
 
-import RoomPropTypes from '../../types/room';
+import RoomComponent from '../RoomComponent';
 
-class Kitchen extends React.Component {
-  static propTypes = {
-    ...RoomPropTypes,
-  };
-
+class Kitchen extends RoomComponent {
   render() {
     const { moveToRoom } = this.props;
 

@@ -15,7 +15,7 @@ const mapStateToProps = state => {
   const { rooms } = state;
 
   return {
-    room: rooms.byId[rooms.active].component,
+    ...rooms.byId[rooms.active],
   };
 };
 
@@ -28,6 +28,6 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(props => {
-  const Component = Rooms[props.room];
+  const Component = Rooms[props.component];
   return <Component {...props} />;
 });

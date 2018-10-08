@@ -1,4 +1,7 @@
+import React from 'react';
 import { assocPath, path } from 'ramda';
+
+import GlitchText from '../components/GlitchText';
 
 export const MOVE_TO_ROOM = 'logo-folio/rooms/MOVE_TO_ROOM';
 export const UNLOCK = 'logo-folio/rooms/UNLOCK';
@@ -12,12 +15,21 @@ export const defaultState = {
       title: 'Parvis',
       component: 'Parvis',
       locked: false,
+      firstEntryMessages: [
+        <p>
+          Welcome my <GlitchText>friend</GlitchText> !
+        </p>,
+        <p>
+          This mansion may looks scary. But you will see, there is no <GlitchText>danger</GlitchText> in it.
+        </p>,
+      ],
     },
     1: {
       id: 1,
       title: 'Kitchen',
       component: 'Kitchen',
       locked: true,
+      firstEntryMessages: [<p>This is the kitchen</p>],
     },
     2: {
       id: 2,

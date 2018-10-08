@@ -5,22 +5,6 @@ import RoomComponent from '../RoomComponent';
 import GlitchText from '../../components/GlitchText';
 
 class Parvis extends RoomComponent {
-  componentDidMount = () => {
-    const { addMessage } = this.props;
-
-    addMessage(
-      <p>
-        Welcome my <GlitchText>friend</GlitchText> !
-      </p>
-    );
-
-    addMessage(
-      <p>
-        This mansion may looks scary. But you will see, there is no <GlitchText>danger</GlitchText> in it.
-      </p>
-    );
-  };
-
   render() {
     const { addMessage, moveToRoom } = this.props;
 
