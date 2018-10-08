@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=K2D:800');
+@import './utils/colors';
 
 body {
   margin: 0;
@@ -9,4 +10,6 @@ body {
   font-family: 'K2D', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: $black;
+  color: $white;
 }

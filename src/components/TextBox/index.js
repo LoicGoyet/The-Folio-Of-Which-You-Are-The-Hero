@@ -1,33 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typist from 'react-typist';
+import classNames from 'classnames';
 
 import './style.scss';
 
 class TextBox extends React.Component {
   static propTypes = {
     children: PropTypes.any.isRequired,
+    className: PropTypes.string,
   };
 
-  state = {
-    isOpen: false,
-  };
-
-  componentDidMount() {
-    setTimeout(this.open, 1);
-  }
-
-  open = () => {
-    this.setState({ isOpen: true });
-  };
-
-  close = () => {
-    this.setState({ isOpen: false });
+  static defaultProps = {
+    className: undefined,
   };
 
   render = () => {
-    const { children } = this.props;
-    const { isOpen } = this.state;
+    const { children, className } = this.props;
 
     const config = {
       startDelay: 0,
@@ -38,7 +27,12 @@ class TextBox extends React.Component {
     };
 
     return (
-      <div className={`text-box ${isOpen && 'text-box--is-open'}`}>
+      <div
+        className={classNames({
+          'text-box': true,
+          [className]: !!className,
+        })}
+      >
         <Typist {...config}>{children}</Typist>
       </div>
     );

@@ -1,0 +1,27 @@
+.messages-feed__text-box {
+  position: relative;
+  z-index: 1000;
+  transition: transform 300ms ease-in-out;
+  transform: scaleY(0);
+
+  &.messages-feed__text-box--is-open {
+    transform: scaleY(1);
+  }
+}
+
+.messages-feed__backdrop-btn {
+  position: fixed;
+  z-index: 999;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: block;
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}

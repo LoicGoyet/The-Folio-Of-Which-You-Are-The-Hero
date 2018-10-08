@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Kitchen from '../../rooms/Kitchen';
 import Parvis from '../../rooms/Parvis';
+import { addMessage } from '../../redux/messages';
 
 const Rooms = {
   Kitchen,
@@ -17,7 +18,14 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(props => {
+const mapDispatchToProps = dispatch => ({
+  addMessage: message => dispatch(addMessage(message)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(props => {
   const Component = Rooms[props.room];
   return <Component {...props} />;
 });

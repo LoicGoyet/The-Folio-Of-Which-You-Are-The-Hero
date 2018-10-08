@@ -1,7 +1,7 @@
 import { assocPath } from 'ramda';
 
-export const ADD = 'logo-folio/messages/ADD';
-export const SET_AS_READ = 'logo-folio/messages/SET_AS_READ';
+export const ADD_MESSAGE = 'logo-folio/messages/ADD_MESSAGE';
+export const SET_MESSAGE_AS_READ = 'logo-folio/messages/SET_MESSAGE_AS_READ';
 
 export const defaultState = {
   byId: {},
@@ -10,16 +10,16 @@ export const defaultState = {
 
 export default (state = defaultState, action = {}) => {
   switch (action.type) {
-    case ADD: {
+    case ADD_MESSAGE: {
       const id = state.allIds.length;
-      const { message } = action;
+      const { content } = action;
       return {
         ...state,
         byId: {
           ...state.byId,
           [id]: {
             id,
-            message,
+            content,
             read: false,
             createdAt: Date.now(),
           },
@@ -28,7 +28,7 @@ export default (state = defaultState, action = {}) => {
       };
     }
 
-    case SET_AS_READ: {
+    case SET_MESSAGE_AS_READ: {
       return assocPath(['byId', action.id, 'read'], true, state);
     }
 
@@ -38,12 +38,12 @@ export default (state = defaultState, action = {}) => {
   }
 };
 
-export const add = message => ({
-  type: ADD,
-  message,
+export const addMessage = content => ({
+  type: ADD_MESSAGE,
+  content,
 });
 
-export const setAsRead = id => ({
-  type: SET_AS_READ,
+export const setMessageAsRead = id => ({
+  type: SET_MESSAGE_AS_READ,
   id,
 });
