@@ -1,4 +1,4 @@
-import reducer, { defaultState, moveToRoom, unlock, removeItem } from '../rooms';
+import reducer, { defaultState, moveToRoom, unlock, removeItem, setRoomAsVisited } from '../rooms';
 
 it('defaultState is setup by default', () => {
   expect(reducer()).toEqual(defaultState);
@@ -15,6 +15,13 @@ it('unlock room', () => {
   expect(defaultState.byId[unlockedRoom].locked).toEqual(true);
   const state = reducer(defaultState, unlock(unlockedRoom));
   expect(state.byId[unlockedRoom].locked).toEqual(false);
+});
+
+it('unlock room', () => {
+  const notVisitedRoom = 0;
+  expect(defaultState.byId[notVisitedRoom].visited).toEqual(false);
+  const state = reducer(defaultState, setRoomAsVisited(notVisitedRoom));
+  expect(state.byId[notVisitedRoom].visited).toEqual(true);
 });
 
 it('remove item', () => {
