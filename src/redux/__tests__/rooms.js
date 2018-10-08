@@ -1,12 +1,12 @@
-import reducer, { defaultState, move, unlock, removeItem } from '../rooms';
+import reducer, { defaultState, moveToRoom, unlock, removeItem } from '../rooms';
 
 it('defaultState is setup by default', () => {
   expect(reducer()).toEqual(defaultState);
 });
 
-it('move room', () => {
+it('move to room', () => {
   const goToRoom = 1;
-  const state = reducer(defaultState, move(goToRoom));
+  const state = reducer(defaultState, moveToRoom(goToRoom));
   expect(state.active).toEqual(goToRoom);
 });
 

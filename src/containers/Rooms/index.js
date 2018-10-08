@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Kitchen from '../../rooms/Kitchen';
 import Parvis from '../../rooms/Parvis';
 import { addMessage } from '../../redux/messages';
+import { moveToRoom } from '../../redux/rooms';
 
 const Rooms = {
   Kitchen,
@@ -20,6 +21,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   addMessage: message => dispatch(addMessage(message)),
+  moveToRoom: roomId => dispatch(moveToRoom(roomId)),
 });
 
 export default connect(

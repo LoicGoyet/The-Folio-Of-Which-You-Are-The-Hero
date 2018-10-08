@@ -1,6 +1,6 @@
 import { assocPath, path } from 'ramda';
 
-export const MOVE = 'logo-folio/rooms/MOVE';
+export const MOVE_TO_ROOM = 'logo-folio/rooms/MOVE_TO_ROOM';
 export const UNLOCK = 'logo-folio/rooms/UNLOCK';
 export const REMOVE_ITEM = 'logo-folio/rooms/REMOVE_ITEM';
 
@@ -45,7 +45,7 @@ export const defaultState = {
 
 export default (state = defaultState, action = {}) => {
   switch (action.type) {
-    case MOVE: {
+    case MOVE_TO_ROOM: {
       return {
         ...state,
         active: action.id,
@@ -69,8 +69,8 @@ export default (state = defaultState, action = {}) => {
   }
 };
 
-export const move = id => ({
-  type: MOVE,
+export const moveToRoom = id => ({
+  type: MOVE_TO_ROOM,
   id,
 });
 
