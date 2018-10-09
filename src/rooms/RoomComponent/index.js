@@ -22,7 +22,7 @@ class RoomComponent extends React.Component {
   componentDidMount = () => {
     const { addMessage, firstEntryMessages, visited } = this.props;
     if (visited) return;
-    return firstEntryMessages.map(message => addMessage(message));
+    setTimeout(() => firstEntryMessages.map(message => addMessage(message)), 750);
   };
 
   componentWillUnmount = () => {
