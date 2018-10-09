@@ -52,7 +52,12 @@ class Screen extends React.Component {
     const { isSwitchingOn, isTransitioning } = this.state;
 
     return (
-      <div className="screen">
+      <div
+        className={classNames({
+          screen: true,
+          'screen--no-interaction': isSwitchingOn || isTransitioning,
+        })}
+      >
         <div
           className={classNames({
             screen__inner: true,

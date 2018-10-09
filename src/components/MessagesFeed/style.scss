@@ -10,8 +10,8 @@
 }
 
 .messages-feed__backdrop-btn {
-  position: fixed;
-  z-index: 999;
+  position: absolute;
+  z-index: 1001;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -23,5 +23,5 @@
   width: 100%;
   background-color: transparent;
   border: 0;
-  cursor: pointer;
+  cursor: inherit;
 }

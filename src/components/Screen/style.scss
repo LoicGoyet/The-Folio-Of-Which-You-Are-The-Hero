@@ -74,6 +74,11 @@
   max-width: 60rem;
   margin: 1rem;
   overflow: hidden;
+  cursor: crosshair;
+
+  &--no-interaction {
+    cursor: none;
+  }
 }
 
 .screen__inner {
@@ -89,12 +94,14 @@
     animation: switch-on 0.55s cubic-bezier(0.230, 1.000, 0.320, 1.000);;
     animation-fill-mode: backwards;
     pointer-events: none;
+    cursor: none;
   }
 
   &--is-transitioning {
     animation: transition 2s linear;
     animation-fill-mode: forwards;
     pointer-events: none;
+    cursor: none;
   }
 }
 
