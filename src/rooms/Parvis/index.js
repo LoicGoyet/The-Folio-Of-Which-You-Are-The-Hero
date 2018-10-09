@@ -5,12 +5,11 @@ import RoomComponent from '../RoomComponent';
 import GlitchText from '../../components/GlitchText';
 
 class Parvis extends RoomComponent {
-  render() {
+  get renderRoom() {
     const { addMessage, moveToRoom } = this.props;
 
     return (
-      <p className="parvis">
-        Parvis
+      <React.Fragment>
         <button
           type="button"
           onClick={() =>
@@ -26,7 +25,7 @@ class Parvis extends RoomComponent {
         <button type="button" onClick={() => moveToRoom(1)}>
           go to kitchen
         </button>
-      </p>
+      </React.Fragment>
     );
   }
 }

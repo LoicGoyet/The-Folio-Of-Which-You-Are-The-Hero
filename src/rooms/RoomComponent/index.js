@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './style.scss';
 
 class RoomComponent extends React.Component {
   static propTypes = {
@@ -7,7 +8,7 @@ class RoomComponent extends React.Component {
     moveToRoom: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
     setRoomAsVisited: PropTypes.func.isRequired,
     id: PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types
-    title: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
+    title: PropTypes.string.isRequired,
     component: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
     locked: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
     visited: PropTypes.bool.isRequired,
@@ -28,6 +29,17 @@ class RoomComponent extends React.Component {
     const { setRoomAsVisited, id } = this.props;
     return setRoomAsVisited(id);
   };
+
+  render() {
+    const { title } = this.props;
+    return (
+      <div>
+        <h1 className="room-component__title">{title}</h1>
+
+        {this.renderRoom}
+      </div>
+    );
+  }
 }
 
 export default RoomComponent;

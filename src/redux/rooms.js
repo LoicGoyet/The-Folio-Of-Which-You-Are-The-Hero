@@ -17,6 +17,8 @@ export const defaultState = {
       component: 'Parvis',
       locked: false,
       visited: false,
+      illustration:
+        'https://raw.githubusercontent.com/LoicGoyet/The-Folio-Of-Which-You-Are-The-Hero/master/src/components/rooms/entrance/illustration.gif',
       firstEntryMessages: [
         <p>
           Welcome my <GlitchText>friend</GlitchText> !
@@ -32,6 +34,8 @@ export const defaultState = {
       component: 'Kitchen',
       locked: true,
       visited: false,
+      illustration:
+        'http://cdn5.dlp-media.com/resize/mwImage/1/640/360/75/wdpromedia.disney.go.com/media/wdpro-dlp-assets/prod/fr-fr/system/images/n015233_2020jul22_phantom-manor_16-9.jpg',
       firstEntryMessages: [<p>This is the kitchen</p>],
     },
     2: {

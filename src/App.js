@@ -3,14 +3,15 @@ import { Provider } from 'react-redux';
 
 import Rooms from './containers/Rooms';
 import MessagesFeed from './containers/MessagesFeed';
+import Screen from './containers/Screen';
 import store from './store';
 
 const App = () => (
   <Provider store={store}>
-    <div>
+    <Screen>
       <Rooms />
       <MessagesFeed />
-    </div>
+    </Screen>
   </Provider>
 );
 

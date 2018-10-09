@@ -1,8 +1,8 @@
 @import '../../style/utils/colors.scss';
 
 .glitch-text {
-  --color: #{$black};
-  --bg: #{$white};
+  --color: #{$white};
+  --bg: #{$black};
   --glitch-shadow-1: #{$purple};
   --glitch-shadow-2: #{$red};
   color: var(--color);

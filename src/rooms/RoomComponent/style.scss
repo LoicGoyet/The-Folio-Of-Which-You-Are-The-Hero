@@ -1,0 +1,26 @@
+@keyframes title-entry {
+  0% {
+    visibility:visible;
+  }
+
+  100% {
+    visibility:hidden;
+  }
+}
+
+.room-component__title {
+  color:#00FF00;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  visibility: hidden;
+  pointer-events: none;
+  font-family: sans-serif;
+  font-size: 4rem;
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin: 0;
+  animation: title-entry 4s linear;
+  animation-fill-mode: forwards;
+}
