@@ -9,6 +9,13 @@ class TextBox extends React.Component {
   static propTypes = {
     children: PropTypes.any.isRequired,
     className: PropTypes.string,
+    isTyping: PropTypes.bool,
+    onTypingDone: PropTypes.func,
+  };
+
+  static defaultProps = {
+    isTyping: true,
+    onTypingDone: () => undefined,
   };
 
   static defaultProps = {
@@ -16,7 +23,7 @@ class TextBox extends React.Component {
   };
 
   render = () => {
-    const { children, className } = this.props;
+    const { children, className, isTyping, onTypingDone } = this.props;
 
     const config = {
       startDelay: 0,
@@ -24,6 +31,7 @@ class TextBox extends React.Component {
       cursor: {
         show: false,
       },
+      onTypingDone,
     };
 
     return (
@@ -33,7 +41,8 @@ class TextBox extends React.Component {
           [className]: !!className,
         })}
       >
-        <Typist {...config}>{children}</Typist>
+        {isTyping && <Typist {...config}>{children}</Typist>}
+        {!isTyping && children}
       </div>
     );
   };

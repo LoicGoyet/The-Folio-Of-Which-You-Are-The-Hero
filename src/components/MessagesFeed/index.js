@@ -19,6 +19,7 @@ class MessagesFeed extends React.Component {
 
   state = {
     isOpen: false,
+    isTyping: true,
   };
 
   componentDidMount() {
@@ -29,11 +30,18 @@ class MessagesFeed extends React.Component {
   componentDidUpdate(prevProps) {
     const { message } = this.props;
     if (message === prevProps.message) return null;
-    if (message && !message.read) setTimeout(this.open, 1);
+    if (message && !message.read) {
+      setTimeout(this.open, 1);
+      this.startTyping();
+    }
   }
 
   backdropClick = () => {
     const { onEndReading, message } = this.props;
+    const { isTyping } = this.state;
+
+    if (isTyping) return this.endTyping();
+
     this.close();
     setTimeout(() => onEndReading(message.id), 300);
   };
@@ -46,9 +54,17 @@ class MessagesFeed extends React.Component {
     this.setState({ isOpen: false });
   };
 
+  startTyping = () => {
+    this.setState({ isTyping: true });
+  };
+
+  endTyping = () => {
+    this.setState({ isTyping: false });
+  };
+
   render = () => {
     const { message } = this.props;
-    const { isOpen } = this.state;
+    const { isOpen, isTyping } = this.state;
     if (!message) return null;
 
     return (
@@ -60,6 +76,8 @@ class MessagesFeed extends React.Component {
             'messages-feed__text-box': true,
             'messages-feed__text-box--is-open': isOpen,
           })}
+          isTyping={isTyping}
+          onTypingDone={this.endTyping}
         >
           {message.content}
         </TextBox>
