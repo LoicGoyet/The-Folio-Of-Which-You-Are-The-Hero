@@ -4,35 +4,36 @@
 @keyframes transition {
   0% {
     transform: scale(1,0.8) translate3d(0,0,0);
-    -webkit-filter: brightness(30);
-    filter: brightness(30);
+    // -webkit-filter: brightness(30);
+    // filter: brightness(30);
     opacity: 1;
   }
 
-  3.5% {
+  29.166666667% {
     transform: scale(1,0.8) translate3d(0,100%,0);
   }
 
-  3.6% {
+  30% {
     transform: scale(1,0.8) translate3d(0,-100%,0);
     opacity: 1;
   }
 
-  9% {
+  75% {
     transform: scale(1.3,0.6) translate3d(0,100%,0);
-    -webkit-filter: brightness(30);
-    filter: brightness(30);
+    // -webkit-filter: brightness(30);
+    // filter: brightness(30);
     opacity: 0;
   }
 
-  11% {
+  91.666666667% {
     transform: scale(1,1) translate3d(0,0,0);
     -webkit-filter: contrast(0) brightness(0);
     filter: contrast(0) brightness(0);
     opacity: 0;
   }
 
-  80% {
+  // to do
+  100% {
     transform: scale(1,1) translate3d(0,0,0);
     -webkit-filter: contrast(1) brightness(1.2) saturate(1.3);
     filter: contrast(1) brightness(1.2) saturate(1.3);
@@ -75,6 +76,8 @@
   margin: 1rem;
   overflow: hidden;
   cursor: crosshair;
+  background-size: cover;
+  background-position: center;
 
   &--no-interaction {
     cursor: none;
@@ -98,7 +101,7 @@
   }
 
   &--is-transitioning {
-    animation: transition 2s linear;
+    animation: transition 240ms linear;
     animation-fill-mode: forwards;
     pointer-events: none;
     cursor: none;

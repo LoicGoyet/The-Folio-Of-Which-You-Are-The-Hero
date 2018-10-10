@@ -44,7 +44,7 @@ class Screen extends React.Component {
 
     setTimeout(() => {
       this.setState({ isTransitioning: false });
-    }, 2000);
+    }, 240);
   };
 
   render() {
