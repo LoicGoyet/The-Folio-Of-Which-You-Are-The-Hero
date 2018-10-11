@@ -1,3 +1,5 @@
+@import '../../style/utils/colors.scss';
+
 @keyframes title-entry {
   0% {
     visibility:visible;
@@ -23,4 +25,16 @@
   margin: 0;
   animation: title-entry 4s linear;
   animation-fill-mode: forwards;
+}
+
+.room-component__interactive {
+  cursor: pointer;
+  fill: transparent;
+  transition: stroke-width 100ms ease-in-out;
+  stroke-width: 0;
+
+  &:hover {
+    stroke: $purple;
+    stroke-width: 8px;
+  }
 }

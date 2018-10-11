@@ -27,8 +27,8 @@ it('unlock room', () => {
 it('remove item', () => {
   const roomId = 2;
   const interactiveId = 0;
-  const itemId = 0;
 
-  const state = reducer(defaultState, removeItem(roomId, interactiveId, itemId));
-  expect(state.byId[roomId].interactives.byId[interactiveId].items).toEqual([]);
+  expect(defaultState.byId[roomId].interactives.byId[interactiveId].item).toEqual(0);
+  const state = reducer(defaultState, removeItem(roomId, interactiveId));
+  expect(state.byId[roomId].interactives.byId[interactiveId].item).toEqual(null);
 });

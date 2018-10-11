@@ -1,5 +1,5 @@
 import React from 'react';
-import { assocPath, path } from 'ramda';
+import { assocPath } from 'ramda';
 
 import GlitchText from '../components/GlitchText';
 
@@ -27,6 +27,24 @@ export const defaultState = {
           This mansion may looks scary. But you will see, there is no <GlitchText>danger</GlitchText> in it.
         </p>,
       ],
+      interactives: {
+        byId: {
+          0: {
+            id: 0,
+            title: 'Mail box',
+            item: 1,
+            message: 'Close to the entry door, a mailbox is open. Some items are still in it',
+            path: 'M 326.762 16.925 L 418.428 175.696 L 235.095 175.696 L 326.762 16.925 Z',
+          },
+          // 1: {
+          //   id: 1,
+          //   title: 'Ringbell',
+          //   message: 'It rings, but no one is coming...',
+          // },
+        },
+        // allIds: [0, 1],
+        allIds: [0],
+      },
     },
     1: {
       id: 1,
@@ -47,13 +65,15 @@ export const defaultState = {
       interactives: {
         byId: {
           0: {
+            id: 0,
             title: 'tiroir',
-            items: [0],
+            item: 0,
             message: 'ha ha ha',
           },
           1: {
+            id: 1,
             title: 'placard',
-            items: [],
+            message: 'there is nothing in it',
           },
         },
         allIds: [0, 1],
@@ -81,10 +101,9 @@ export default (state = defaultState, action = {}) => {
     }
 
     case REMOVE_ITEM: {
-      const { roomId, interactiveId, itemId } = action;
-      const itemsPath = ['byId', roomId, 'interactives', 'byId', interactiveId, 'items'];
-      const items = path(itemsPath, state);
-      return assocPath(itemsPath, items.filter(item => item !== itemId), state);
+      const { roomId, interactiveId } = action;
+      const itemPath = ['byId', roomId, 'interactives', 'byId', interactiveId, 'item'];
+      return assocPath(itemPath, null, state);
     }
 
     default: {
@@ -108,9 +127,8 @@ export const setRoomAsVisited = id => ({
   id,
 });
 
-export const removeItem = (roomId, interactiveId, itemId) => ({
+export const removeItem = (roomId, interactiveId) => ({
   type: REMOVE_ITEM,
   roomId,
   interactiveId,
-  itemId,
 });

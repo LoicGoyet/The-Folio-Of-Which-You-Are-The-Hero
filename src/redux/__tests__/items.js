@@ -5,6 +5,6 @@ it('defaultState is setup by default', () => {
 });
 
 it('add item in inventory', () => {
-  const state = reducer(defaultState, addInInventory(2, 0, 0));
+  const state = reducer(defaultState, addInInventory(0));
   expect(state.byId[0].inInventory).toEqual(true);
 });

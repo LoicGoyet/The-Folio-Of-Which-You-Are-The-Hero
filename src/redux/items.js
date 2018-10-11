@@ -8,7 +8,13 @@ export const defaultState = {
       id: 0,
       title: 'Clé',
       inInventory: false,
-      message: 'lorem ipsum',
+      messages: ['This keys looks very old !', 'This key might be usefull for the kitchen'],
+    },
+    1: {
+      id: 1,
+      title: 'Trowel',
+      inInventory: false,
+      messages: ['Seems pretty useless...'],
     },
   },
   allIds: [0],
@@ -26,9 +32,7 @@ export default (state = defaultState, action = {}) => {
   }
 };
 
-export const addInInventory = (roomId, interactiveId, itemId) => ({
+export const addInInventory = itemId => ({
   type: ADD_IN_INVENTORY,
-  roomId,
-  interactiveId,
   itemId,
 });
