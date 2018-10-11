@@ -59,6 +59,12 @@ class Screen extends React.Component {
         })}
       >
         <div
+          className="screen__glitch"
+          style={{
+            backgroundImage: `url("${illustration}")`,
+          }}
+        />
+        <div
           className={classNames({
             screen__inner: true,
             'screen__inner--is-switching-on': isSwitchingOn,

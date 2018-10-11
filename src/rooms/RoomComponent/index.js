@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { path } from 'ramda';
+
 import './style.scss';
+import MouseLabel from '../../components/MouseLabel';
 
 class RoomComponent extends React.Component {
   static propTypes = {
@@ -15,13 +17,15 @@ class RoomComponent extends React.Component {
     locked: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
     visited: PropTypes.bool.isRequired,
     firstEntryMessages: PropTypes.arrayOf(PropTypes.object),
-    interactives: PropTypes.object, // eslint-disable-line react/no-unused-prop-types
+    interactives: PropTypes.object,
+    exits: PropTypes.object,
     items: PropTypes.object.isRequired,
   };
 
   static defaultProps = {
     firstEntryMessages: [],
     interactives: undefined,
+    exits: undefined,
   };
 
   componentDidMount = () => {
@@ -44,8 +48,13 @@ class RoomComponent extends React.Component {
     addInInventory(item.id);
   };
 
+  exit = exit => {
+    const { moveToRoom } = this.props;
+    moveToRoom(exit.room);
+  };
+
   render() {
-    const { title, interactives } = this.props;
+    const { title, interactives, exits } = this.props;
     return (
       <div>
         <h1 className="room-component__title">{title}</h1>
@@ -56,12 +65,30 @@ class RoomComponent extends React.Component {
               const interactive = path(['byId', interactiveId], interactives);
 
               return (
-                <path
-                  className="room-component__interactive"
-                  d={interactive.path}
-                  key={interactive.id}
-                  onClick={() => this.interact(interactive)}
-                />
+                <MouseLabel title={interactive.title} key={interactive.id}>
+                  <path
+                    className="room-component__interactive"
+                    d={interactive.path}
+                    strokeLinecap="square"
+                    onClick={() => this.interact(interactive)}
+                  />
+                </MouseLabel>
+              );
+            })}
+
+          {!!exits &&
+            exits.allIds.map(exitId => {
+              const exit = path(['byId', exitId], exits);
+
+              return (
+                <MouseLabel title={exit.title} key={exit.id}>
+                  <path
+                    className="room-component__exit"
+                    d={exit.path}
+                    strokeLinecap="square"
+                    onClick={() => this.exit(exit)}
+                  />
+                </MouseLabel>
               );
             })}
         </svg>

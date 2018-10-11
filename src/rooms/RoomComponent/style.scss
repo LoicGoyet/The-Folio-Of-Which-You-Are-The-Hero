@@ -27,14 +27,24 @@
   animation-fill-mode: forwards;
 }
 
-.room-component__interactive {
+.room-component__interactive,
+.room-component__exit {
   cursor: pointer;
   fill: transparent;
-  transition: stroke-width 100ms ease-in-out;
+  transition: all 100ms ease-in-out;
   stroke-width: 0;
 
   &:hover {
-    stroke: $purple;
-    stroke-width: 8px;
+    stroke-width: 4px;
   }
+}
+
+.room-component__interactive:hover {
+  stroke: $blue-light;
+  fill: transparentize($blue-light, 0.7);
+}
+
+.room-component__exit:hover {
+  stroke: $red;
+  fill: transparentize($red, 0.7);
 }

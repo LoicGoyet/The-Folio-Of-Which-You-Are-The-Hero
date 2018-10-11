@@ -2,6 +2,8 @@ import React from 'react';
 import { assocPath } from 'ramda';
 
 import GlitchText from '../components/GlitchText';
+import parvisIllustration from '../rooms/Parvis/illustration.gif';
+import kitchenIllustration from '../rooms/Kitchen/illustration.jpg';
 
 export const MOVE_TO_ROOM = 'logo-folio/rooms/MOVE_TO_ROOM';
 export const UNLOCK = 'logo-folio/rooms/UNLOCK';
@@ -17,14 +19,38 @@ export const defaultState = {
       component: 'Parvis',
       locked: false,
       visited: false,
-      illustration:
-        'https://raw.githubusercontent.com/LoicGoyet/The-Folio-Of-Which-You-Are-The-Hero/master/src/components/rooms/entrance/illustration.gif',
+      illustration: parvisIllustration,
       firstEntryMessages: [
         <p>
           Welcome my <GlitchText>friend</GlitchText> !
         </p>,
         <p>
           This mansion may looks scary. But you will see, there is no <GlitchText>danger</GlitchText> in it.
+        </p>,
+      ],
+      exits: {
+        byId: {
+          0: {
+            id: 0,
+            title: 'go to Kitchen',
+            room: 1,
+            path:
+              'M480,588v-76c0,0-7-8-4.25-13l18.25-1c0,0,6-36,36-36s40.75,31,40.75,33c0,1,19.25,0,19.25,0s-0.75,14.25-9,14.25L580.5,588H480z',
+          },
+        },
+        allIds: [0],
+      },
+    },
+    1: {
+      id: 2,
+      title: 'Kitchen',
+      component: 'Kitchen',
+      locked: true,
+      visited: false,
+      illustration: kitchenIllustration,
+      firstEntryMessages: [
+        <p>
+          You enter into the <GlitchText>Kitchen</GlitchText> !
         </p>,
       ],
       interactives: {
@@ -34,27 +60,22 @@ export const defaultState = {
             title: 'Mail box',
             item: 1,
             message: 'Close to the entry door, a mailbox is open. Some items are still in it',
-            path: 'M 326.762 16.925 L 418.428 175.696 L 235.095 175.696 L 326.762 16.925 Z',
+            path: 'M424,412.75l108.625-10.5l-0.438,143.5L429.219,574.5l-1.359-39c0,0-0.859-2.75-3.859-2.5V412.75z',
           },
-          // 1: {
-          //   id: 1,
-          //   title: 'Ringbell',
-          //   message: 'It rings, but no one is coming...',
-          // },
         },
-        // allIds: [0, 1],
         allIds: [0],
       },
-    },
-    1: {
-      id: 1,
-      title: 'Kitchen',
-      component: 'Kitchen',
-      locked: true,
-      visited: false,
-      illustration:
-        'http://cdn5.dlp-media.com/resize/mwImage/1/640/360/75/wdpromedia.disney.go.com/media/wdpro-dlp-assets/prod/fr-fr/system/images/n015233_2020jul22_phantom-manor_16-9.jpg',
-      firstEntryMessages: [<p>This is the kitchen</p>],
+      exits: {
+        byId: {
+          0: {
+            id: 0,
+            title: 'go to the Parvis',
+            room: 0,
+            path: 'M491.25,336.75L490.5,190l-81.5,4.5c0,0-0.375,1.125,0,3.875l2,136.375L491.25,336.75z',
+          },
+        },
+        allIds: [0],
+      },
     },
     2: {
       id: 2,
