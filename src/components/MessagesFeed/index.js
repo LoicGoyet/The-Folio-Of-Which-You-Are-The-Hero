@@ -22,45 +22,48 @@ class MessagesFeed extends React.Component {
     isTyping: true,
   };
 
-  componentDidMount() {
+  componentDidMount = () => {
     const { message } = this.props;
     if (message && !message.read) setTimeout(this.open, 1);
-  }
 
-  componentDidUpdate(prevProps) {
+    this.spacebarListener = document.addEventListener('keydown', this.handleSpacebarPress);
+  };
+
+  componentDidUpdate = prevProps => {
     const { message } = this.props;
     if (message === prevProps.message) return null;
     if (message && !message.read) {
       setTimeout(this.open, 1);
       this.startTyping();
     }
-  }
+  };
+
+  componentWillUnmount = () => {
+    this.spacebarListener = document.removeEventListener('keydown', this.handleSpacebarPress);
+  };
+
+  handleSpacebarPress = event => {
+    if (event.keyCode === 32) this.backdropClick();
+  };
 
   backdropClick = () => {
     const { onEndReading, message } = this.props;
     const { isTyping } = this.state;
 
+    if (!message) return;
     if (isTyping) return this.endTyping();
 
     this.close();
     setTimeout(() => onEndReading(message.id), 300);
   };
 
-  open = () => {
-    this.setState({ isOpen: true });
-  };
+  open = () => this.setState({ isOpen: true });
 
-  close = () => {
-    this.setState({ isOpen: false });
-  };
+  close = () => this.setState({ isOpen: false });
 
-  startTyping = () => {
-    this.setState({ isTyping: true });
-  };
+  startTyping = () => this.setState({ isTyping: true });
 
-  endTyping = () => {
-    this.setState({ isTyping: false });
-  };
+  endTyping = () => this.setState({ isTyping: false });
 
   render = () => {
     const { message } = this.props;
