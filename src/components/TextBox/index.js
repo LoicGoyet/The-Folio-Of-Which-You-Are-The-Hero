@@ -4,6 +4,7 @@ import Typist from 'react-typist';
 import classNames from 'classnames';
 
 import './style.scss';
+import Blink from '../Blink';
 
 class TextBox extends React.Component {
   static propTypes = {
@@ -41,8 +42,19 @@ class TextBox extends React.Component {
           [className]: !!className,
         })}
       >
-        {isTyping && <Typist {...config}>{children}</Typist>}
-        {!isTyping && children}
+        {isTyping && (
+          <React.Fragment>
+            <Typist {...config}>{children}</Typist>
+            <Blink className="text-box__ui-hint">click to pass</Blink>
+          </React.Fragment>
+        )}
+
+        {!isTyping && (
+          <React.Fragment>
+            {children}
+            <Blink className="text-box__ui-hint">click to continue</Blink>
+          </React.Fragment>
+        )}
       </div>
     );
   };
