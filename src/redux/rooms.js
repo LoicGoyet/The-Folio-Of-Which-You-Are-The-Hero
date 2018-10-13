@@ -32,7 +32,6 @@ export const defaultState = {
         byId: {
           0: {
             id: 0,
-            title: 'go to Kitchen',
             room: 1,
             path:
               'M480,588v-76c0,0-7-8-4.25-13l18.25-1c0,0,6-36,36-36s40.75,31,40.75,33c0,1,19.25,0,19.25,0s-0.75,14.25-9,14.25L580.5,588H480z',
@@ -42,7 +41,7 @@ export const defaultState = {
       },
     },
     1: {
-      id: 2,
+      id: 1,
       title: 'Kitchen',
       component: 'Kitchen',
       locked: true,
@@ -69,7 +68,6 @@ export const defaultState = {
         byId: {
           0: {
             id: 0,
-            title: 'go to the Parvis',
             room: 0,
             path: 'M491.25,336.75L490.5,190l-81.5,4.5c0,0-0.375,1.125,0,3.875l2,136.375L491.25,336.75z',
           },

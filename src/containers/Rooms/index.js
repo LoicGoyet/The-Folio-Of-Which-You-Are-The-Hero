@@ -15,10 +15,22 @@ const Rooms = {
 
 const mapStateToProps = state => {
   const { rooms, items } = state;
+  const room = rooms.byId[rooms.active];
 
   return {
-    ...rooms.byId[rooms.active],
+    ...room,
     items,
+    exits: {
+      ...room.exits,
+      byId: room.exits.allIds.map(exitId => {
+        const roomId = room.exits.byId[exitId].room;
+
+        return {
+          ...room.exits.byId[exitId],
+          room: rooms.byId[roomId],
+        };
+      }),
+    },
   };
 };
 

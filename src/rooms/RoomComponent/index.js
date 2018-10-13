@@ -4,6 +4,7 @@ import { path } from 'ramda';
 
 import './style.scss';
 import MouseLabel from '../../components/MouseLabel';
+import RoomComponentExit from './exit';
 
 class RoomComponent extends React.Component {
   static propTypes = {
@@ -54,7 +55,7 @@ class RoomComponent extends React.Component {
   };
 
   render() {
-    const { title, interactives, exits } = this.props;
+    const { title, interactives, exits, moveToRoom } = this.props;
     return (
       <div>
         <h1 className="room-component__title">{title}</h1>
@@ -80,16 +81,7 @@ class RoomComponent extends React.Component {
             exits.allIds.map(exitId => {
               const exit = path(['byId', exitId], exits);
 
-              return (
-                <MouseLabel title={exit.title} key={exit.id}>
-                  <path
-                    className="room-component__exit"
-                    d={exit.path}
-                    strokeLinecap="square"
-                    onClick={() => this.exit(exit)}
-                  />
-                </MouseLabel>
-              );
+              return <RoomComponentExit key={exit.id} exit={exit} moveToRoom={moveToRoom} />;
             })}
         </svg>
 
