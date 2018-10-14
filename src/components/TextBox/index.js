@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import './style.scss';
 import Blink from '../Blink';
+import Panel from '../Panel';
 
 class TextBox extends React.Component {
   static propTypes = {
@@ -36,7 +37,7 @@ class TextBox extends React.Component {
     };
 
     return (
-      <div
+      <Panel
         className={classNames({
           'text-box': true,
           [className]: !!className,
@@ -55,7 +56,7 @@ class TextBox extends React.Component {
             <Blink className="text-box__ui-hint">click to continue</Blink>
           </React.Fragment>
         )}
-      </div>
+      </Panel>
     );
   };
 }

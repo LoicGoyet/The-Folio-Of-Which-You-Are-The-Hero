@@ -1,6 +1,7 @@
 import { assocPath } from 'ramda';
 
 export const ADD_IN_INVENTORY = 'logo-folio/items/ADD_IN_INVENTORY';
+export const READ_INVENTORY_MESSAGE = 'logo-folio/items/READ_INVENTORY_MESSAGE';
 
 export const defaultState = {
   byId: {
@@ -17,7 +18,7 @@ export const defaultState = {
       messages: ['Seems pretty useless...'],
     },
   },
-  allIds: [0],
+  allIds: [0, 1],
 };
 
 export default (state = defaultState, action = {}) => {
@@ -34,5 +35,10 @@ export default (state = defaultState, action = {}) => {
 
 export const addInInventory = itemId => ({
   type: ADD_IN_INVENTORY,
+  itemId,
+});
+
+export const readItemMessage = itemId => ({
+  type: READ_INVENTORY_MESSAGE,
   itemId,
 });

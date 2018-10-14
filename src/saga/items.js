@@ -2,7 +2,7 @@ import React from 'react';
 import { takeEvery, put, select, all } from 'redux-saga/effects';
 import { path } from 'ramda';
 
-import { ADD_IN_INVENTORY } from '../redux/items';
+import { ADD_IN_INVENTORY, READ_INVENTORY_MESSAGE } from '../redux/items';
 import { REMOVE_ITEM } from '../redux/rooms';
 import { ADD_MESSAGE } from '../redux/messages';
 import GlitchText from '../components/GlitchText';
@@ -50,6 +50,13 @@ export function* addMessageOnItemPickUp({ itemId }) {
     ),
   });
 
+  yield readItemMessages({ itemId });
+}
+
+function* readItemMessages({ itemId }) {
+  const { messages } = yield select(state => path(['items', 'byId', itemId], state));
+  if (!messages) return;
+
   yield all(
     messages.map(function*(message) {
       yield put({
@@ -63,4 +70,5 @@ export function* addMessageOnItemPickUp({ itemId }) {
 export default function*() {
   yield takeEvery(ADD_IN_INVENTORY, removeItemInRoom);
   yield takeEvery(ADD_IN_INVENTORY, addMessageOnItemPickUp);
+  yield takeEvery(READ_INVENTORY_MESSAGE, readItemMessages);
 }

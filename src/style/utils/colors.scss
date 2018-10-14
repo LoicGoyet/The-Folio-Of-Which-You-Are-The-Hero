@@ -7,3 +7,7 @@ $blue-light: rgb(9, 236, 221);
 $red: rgb(238, 55, 47);
 $purple: rgb(176, 112, 172);
 $purple-dark: rgb(98, 32, 97);
+
+:root {
+  --border: 5px ridge $white;
+}

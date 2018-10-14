@@ -1,18 +1,12 @@
 @import '../../style/utils/colors.scss';
 
 .text-box {
-  background-color: $black;
-  color: $white;
-  padding: 1.25rem;
-  border-radius: 5px;
   position: relative;
-  border: 5px ridge $white;
 }
 
 .text-box .glitch-text {
   --bg: #{$black};
 }
-
 
 .text-box p {
   margin-top: 0;
