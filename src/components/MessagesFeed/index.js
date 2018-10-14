@@ -42,9 +42,18 @@ class MessagesFeed extends React.Component {
     this.spacebarListener = document.removeEventListener('keydown', this.handleSpacebarPress);
   };
 
-  handleSpacebarPress = event => {
-    if (event.keyCode === 32) this.backdropClick();
-  };
+  get textBoxProps() {
+    const { isOpen, isTyping } = this.state;
+
+    return {
+      className: classNames({
+        'messages-feed__text-box': true,
+        'messages-feed__text-box--is-open': isOpen,
+      }),
+      isTyping,
+      onTypingDone: this.endTyping,
+    };
+  }
 
   backdropClick = () => {
     const { onEndReading, message } = this.props;
@@ -65,25 +74,20 @@ class MessagesFeed extends React.Component {
 
   endTyping = () => this.setState({ isTyping: false });
 
+  handleSpacebarPress = event => {
+    if (event.keyCode === 32) this.backdropClick();
+  };
+
   render = () => {
     const { message } = this.props;
-    const { isOpen, isTyping } = this.state;
     if (!message) return null;
 
     return (
       <React.Fragment>
         <button type="button" className="messages-feed__backdrop-btn" onClick={this.backdropClick} />
-        <TextBox
-          key={message.id}
-          className={classNames({
-            'messages-feed__text-box': true,
-            'messages-feed__text-box--is-open': isOpen,
-          })}
-          isTyping={isTyping}
-          onTypingDone={this.endTyping}
-        >
-          {message.content}
-        </TextBox>
+
+        {/* prettier-ignore */}
+        <TextBox key={message.id} {...this.textBoxProps}>{message.content}</TextBox>
       </React.Fragment>
     );
   };
