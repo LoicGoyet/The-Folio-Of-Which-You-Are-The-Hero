@@ -26,37 +26,52 @@ class Menu extends React.Component {
       <h2 className="menu__sub-heading">Links</h2>
       <ul className="menu__nav">
         <li className="menu__nav-item">
-          <a href={process.env.RESUME_LINK} className="menu__nav-btn">
+          <a href={process.env.REACT_APP_RESUME_LINK} className="menu__nav-btn">
             Download resume
           </a>
         </li>
 
         <li className="menu__nav-item">
-          <a href={process.env.DYB_LINK} target="_blank" rel="noopener noreferrer" className="menu__nav-btn">
+          <a href={process.env.REACT_APP_DYB_LINK} target="_blank" rel="noopener noreferrer" className="menu__nav-btn">
             DoYouBuzz page
           </a>
         </li>
 
         <li className="menu__nav-item">
-          <a href={process.env.GITHUB_LINK} target="_blank" rel="noopener noreferrer" className="menu__nav-btn">
+          <a
+            href={process.env.REACT_APP_GITHUB_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="menu__nav-btn"
+          >
             Github profile
           </a>
         </li>
 
         <li className="menu__nav-item">
-          <a href={process.env.TWITTER_LINK} target="_blank" rel="noopener noreferrer" className="menu__nav-btn">
+          <a
+            href={process.env.REACT_APP_TWITTER_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="menu__nav-btn"
+          >
             Twitter account
           </a>
         </li>
 
         <li className="menu__nav-item">
-          <a href={process.env.LINKEDIN_LINK} target="_blank" rel="noopener noreferrer" className="menu__nav-btn">
+          <a
+            href={process.env.REACT_APP_LINKEDIN_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="menu__nav-btn"
+          >
             Linkedin profile
           </a>
         </li>
 
         <li className="menu__nav-item">
-          <a href={process.env.MAIL_LINK} className="menu__nav-btn">
+          <a href={process.env.REACT_APP_MAIL_LINK} className="menu__nav-btn">
             Send an email
           </a>
         </li>
