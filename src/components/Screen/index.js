@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import './style.scss';
+import Container from '../Container';
 
 class Screen extends React.Component {
   static propTypes = {
@@ -52,31 +53,33 @@ class Screen extends React.Component {
     const { isSwitchingOn, isTransitioning } = this.state;
 
     return (
-      <div
-        className={classNames({
-          screen: true,
-          'screen--no-interaction': isSwitchingOn || isTransitioning,
-        })}
-      >
-        <div
-          className="screen__glitch"
-          style={{
-            backgroundImage: `url("${illustration}")`,
-          }}
-        />
+      <Container>
         <div
           className={classNames({
-            screen__inner: true,
-            'screen__inner--is-switching-on': isSwitchingOn,
-            'screen__inner--is-transitioning': isTransitioning,
+            screen: true,
+            'screen--no-interaction': isSwitchingOn || isTransitioning,
           })}
-          style={{
-            backgroundImage: `url("${illustration}")`,
-          }}
         >
-          {children}
+          <div
+            className="screen__glitch"
+            style={{
+              backgroundImage: `url("${illustration}")`,
+            }}
+          />
+          <div
+            className={classNames({
+              screen__inner: true,
+              'screen__inner--is-switching-on': isSwitchingOn,
+              'screen__inner--is-transitioning': isTransitioning,
+            })}
+            style={{
+              backgroundImage: `url("${illustration}")`,
+            }}
+          >
+            {children}
+          </div>
         </div>
-      </div>
+      </Container>
     );
   }
 }
