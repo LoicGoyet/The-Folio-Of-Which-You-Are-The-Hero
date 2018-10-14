@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { path } from 'ramda';
 
 import './style.scss';
-import MouseLabel from '../../components/MouseLabel';
+import RoomComponentInteractive from './interactive';
 import RoomComponentExit from './exit';
 
 class RoomComponent extends React.Component {
@@ -15,7 +15,6 @@ class RoomComponent extends React.Component {
     addInInventory: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
     id: PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types
     title: PropTypes.string.isRequired,
-    component: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
     locked: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
     visited: PropTypes.bool.isRequired,
     firstEntryMessages: PropTypes.arrayOf(PropTypes.object),
@@ -41,22 +40,9 @@ class RoomComponent extends React.Component {
     return setRoomAsVisited(id);
   };
 
-  interact = interactive => {
-    const { addMessage, items, addInInventory } = this.props;
-    const { message } = interactive;
-    addMessage(message);
-    if (!interactive.item) return;
-    const item = path(['byId', interactive.item], items);
-    addInInventory(item.id);
-  };
+  render = () => {
+    const { title, interactives, exits, moveToRoom, unlock, items, addMessage, addInInventory } = this.props;
 
-  exit = exit => {
-    const { moveToRoom } = this.props;
-    moveToRoom(exit.room);
-  };
-
-  render() {
-    const { title, interactives, exits, moveToRoom, unlock, items } = this.props;
     return (
       <div>
         <h1 className="room-component__title">{title}</h1>
@@ -67,14 +53,13 @@ class RoomComponent extends React.Component {
               const interactive = path(['byId', interactiveId], interactives);
 
               return (
-                <MouseLabel title={interactive.title} key={interactive.id}>
-                  <path
-                    className="room-component__interactive"
-                    d={interactive.path}
-                    strokeLinecap="square"
-                    onClick={() => this.interact(interactive)}
-                  />
-                </MouseLabel>
+                <RoomComponentInteractive
+                  items={items}
+                  interactive={interactive}
+                  addInInventory={addInInventory}
+                  addMessage={addMessage}
+                  key={interactive.id}
+                />
               );
             })}
 
@@ -91,7 +76,7 @@ class RoomComponent extends React.Component {
         {this.renderRoom}
       </div>
     );
-  }
+  };
 }
 
 export default RoomComponent;

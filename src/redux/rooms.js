@@ -16,7 +16,7 @@ export const defaultState = {
     0: {
       id: 0,
       title: 'Parvis',
-      component: 'Parvis',
+      // component: 'Parvis',
       locked: false,
       visited: false,
       illustration: parvisIllustration,

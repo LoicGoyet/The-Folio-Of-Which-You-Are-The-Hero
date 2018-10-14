@@ -1,9 +1,11 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { path } from 'ramda';
 
 import Kitchen from '../../rooms/Kitchen';
 import Parvis from '../../rooms/Parvis';
+import RoomComponent from '../../rooms/RoomComponent';
 import { addMessage } from '../../redux/messages';
 import { moveToRoom, setRoomAsVisited, unlock } from '../../redux/rooms';
 import { addInInventory } from '../../redux/items';
@@ -46,6 +48,6 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(props => {
-  const Component = Rooms[props.component];
+  const Component = path([props.component], Rooms) || RoomComponent;
   return <Component {...props} />;
 });
