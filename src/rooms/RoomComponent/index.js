@@ -11,6 +11,7 @@ class RoomComponent extends React.Component {
     addMessage: PropTypes.func.isRequired,
     moveToRoom: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
     setRoomAsVisited: PropTypes.func.isRequired,
+    unlock: PropTypes.func.isRequired,
     addInInventory: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
     id: PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types
     title: PropTypes.string.isRequired,
@@ -55,7 +56,7 @@ class RoomComponent extends React.Component {
   };
 
   render() {
-    const { title, interactives, exits, moveToRoom } = this.props;
+    const { title, interactives, exits, moveToRoom, unlock, items } = this.props;
     return (
       <div>
         <h1 className="room-component__title">{title}</h1>
@@ -81,7 +82,9 @@ class RoomComponent extends React.Component {
             exits.allIds.map(exitId => {
               const exit = path(['byId', exitId], exits);
 
-              return <RoomComponentExit key={exit.id} exit={exit} moveToRoom={moveToRoom} />;
+              return (
+                <RoomComponentExit key={exit.id} exit={exit} moveToRoom={moveToRoom} unlock={unlock} items={items} />
+              );
             })}
         </svg>
 

@@ -1,4 +1,5 @@
 @import '../../style/utils/colors.scss';
+@import '../../style/utils/cursors.scss';
 
 @keyframes title-entry {
   0% {
@@ -33,6 +34,7 @@
   fill: transparent;
   transition: all 100ms ease-in-out;
   stroke-width: 0;
+  cursor: $cursor_hand;
 
   &:hover {
     stroke-width: 4px;
@@ -44,7 +46,17 @@
   fill: transparentize($blue-light, 0.7);
 }
 
-.room-component__exit:hover {
-  stroke: $red;
-  fill: transparentize($red, 0.7);
+.room-component__exit {
+  &.is-locked {
+    cursor: $cursor_lock;
+  }
+
+  &.can-be-unlocked {
+    cursor: $cursor_unlock;
+  }
+
+  &:hover {
+    stroke: $red;
+    fill: transparentize($red, 0.7);
+  }
 }

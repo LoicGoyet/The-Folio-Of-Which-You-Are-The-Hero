@@ -1,5 +1,6 @@
 @import '../../style/utils/aspect-ratio.scss';
 @import '../../style/utils/colors.scss';
+@import '../../style/utils/cursors.scss';
 
 @keyframes glitch {
   $steps: 10;
@@ -97,7 +98,7 @@
   max-width: 60rem;
   margin: 1rem;
   overflow: hidden;
-  cursor: crosshair;
+  cursor: $cursor_base;
   background-size: cover;
   background-position: center;
 
