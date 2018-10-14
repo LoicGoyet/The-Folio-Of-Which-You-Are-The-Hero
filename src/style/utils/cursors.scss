@@ -1,0 +1,6 @@
+$cursor_url: '/images/cursors';
+$cursor_base: url('#{$cursor_url}/cursor_base.png') 15 15, crosshair;
+$cursor_hand: url('#{$cursor_url}/cursor_hand.png') 7 4, pointer;
+$cursor_lock: url('#{$cursor_url}/cursor_lock.png') 15 15, not-allowed;
+$cursor_unlock: url('#{$cursor_url}/cursor_unlock.gif') 45 45, pointer;
+$cursor_wait: url('#{$cursor_url}/cursor_wait.png') 15 15, auto;
