@@ -17,7 +17,7 @@ class RoomComponent extends React.Component {
     title: PropTypes.string.isRequired,
     locked: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
     visited: PropTypes.bool.isRequired,
-    firstEntryMessages: PropTypes.arrayOf(PropTypes.object),
+    firstEntryMessages: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.string])),
     interactives: PropTypes.object,
     exits: PropTypes.object,
     items: PropTypes.object.isRequired,

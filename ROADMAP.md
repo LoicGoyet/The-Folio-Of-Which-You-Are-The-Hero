@@ -1,6 +1,5 @@
 # Roadmap
 
-* clean code
 * real world implementation
 * entry
 * global layout and only desktop message

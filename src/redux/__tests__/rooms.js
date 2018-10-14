@@ -11,18 +11,18 @@ it('move to room', () => {
 });
 
 it('try to move into locked room', () => {
-  const state = reducer(defaultState, moveToRoom(2));
+  const state = reducer(defaultState, moveToRoom(5));
   expect(state.active).toEqual(defaultState.active);
 });
 
 it('unlock room', () => {
-  const unlockedRoom = 2;
+  const unlockedRoom = 5;
   expect(defaultState.byId[unlockedRoom].locked).toEqual(true);
   const state = reducer(defaultState, unlock(unlockedRoom));
   expect(state.byId[unlockedRoom].locked).toEqual(false);
 });
 
-it('unlock room', () => {
+it('set room as visited', () => {
   const notVisitedRoom = 0;
   expect(defaultState.byId[notVisitedRoom].visited).toEqual(false);
   const state = reducer(defaultState, setRoomAsVisited(notVisitedRoom));

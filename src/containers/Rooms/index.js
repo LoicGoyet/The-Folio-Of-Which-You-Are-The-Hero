@@ -3,15 +3,24 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { path } from 'ramda';
 
+import Bedroom from '../../rooms/Bedroom';
+import Hall from '../../rooms/Hall';
 import Kitchen from '../../rooms/Kitchen';
+import LivingRoom from '../../rooms/LivingRoom';
+import Office from '../../rooms/Office';
 import Parvis from '../../rooms/Parvis';
+
 import RoomComponent from '../../rooms/RoomComponent';
 import { addMessage } from '../../redux/messages';
 import { moveToRoom, setRoomAsVisited, unlock } from '../../redux/rooms';
 import { addInInventory } from '../../redux/items';
 
 const Rooms = {
+  Bedroom,
+  Hall,
   Kitchen,
+  LivingRoom,
+  Office,
   Parvis,
 };
 
