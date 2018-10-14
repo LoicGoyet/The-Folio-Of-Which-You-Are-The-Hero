@@ -44,7 +44,7 @@ export const defaultState = {
       id: 1,
       title: 'Kitchen',
       component: 'Kitchen',
-      locked: true,
+      locked: false,
       visited: false,
       illustration: kitchenIllustration,
       firstEntryMessages: [
@@ -79,7 +79,7 @@ export const defaultState = {
       id: 2,
       title: 'Library',
       component: 'Library',
-      locked: false,
+      locked: true,
       visited: false,
       interactives: {
         byId: {
@@ -105,6 +105,8 @@ export const defaultState = {
 export default (state = defaultState, action = {}) => {
   switch (action.type) {
     case MOVE_TO_ROOM: {
+      if (state.byId[action.id].locked) return { ...state };
+
       return {
         ...state,
         active: action.id,

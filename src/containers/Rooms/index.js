@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Kitchen from '../../rooms/Kitchen';
 import Parvis from '../../rooms/Parvis';
 import { addMessage } from '../../redux/messages';
-import { moveToRoom, setRoomAsVisited } from '../../redux/rooms';
+import { moveToRoom, setRoomAsVisited, unlock } from '../../redux/rooms';
 import { addInInventory } from '../../redux/items';
 
 const Rooms = {
@@ -37,6 +37,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   addMessage: bindActionCreators(addMessage, dispatch),
   moveToRoom: bindActionCreators(moveToRoom, dispatch),
+  unlock: bindActionCreators(unlock, dispatch),
   setRoomAsVisited: bindActionCreators(setRoomAsVisited, dispatch),
   addInInventory: bindActionCreators(addInInventory, dispatch),
 });

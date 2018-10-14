@@ -10,8 +10,13 @@ it('move to room', () => {
   expect(state.active).toEqual(goToRoom);
 });
 
+it('try to move into locked room', () => {
+  const state = reducer(defaultState, moveToRoom(2));
+  expect(state.active).toEqual(defaultState.active);
+});
+
 it('unlock room', () => {
-  const unlockedRoom = 1;
+  const unlockedRoom = 2;
   expect(defaultState.byId[unlockedRoom].locked).toEqual(true);
   const state = reducer(defaultState, unlock(unlockedRoom));
   expect(state.byId[unlockedRoom].locked).toEqual(false);
