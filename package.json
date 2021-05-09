@@ -18,7 +18,7 @@
     "@storybook/addon-knobs": "^3.2.10",
     "@storybook/addon-links": "^3.2.10",
     "@storybook/react": "^3.2.10",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "react-scripts": "^3.4.3",
     "redux-devtools-extension": "^2.13.2"
   },
